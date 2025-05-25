@@ -51,7 +51,8 @@ def feature_matrix_hdf5(
 
     ncpu = int(ray.cluster_resources()["CPU"])
     with h5py.File(fps_h5, "w") as h5f:
-        CHUNKSIZE = 512
+        # edited
+        CHUNKSIZE = 9
 
         fps_dset = h5f.create_dataset(
             "fps", (size, len(featurizer)), chunks=(CHUNKSIZE, len(featurizer)), dtype="int8"

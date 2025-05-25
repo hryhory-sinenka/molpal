@@ -14,4 +14,9 @@ def objective(objective, objective_config: str, **kwargs) -> Type[Objective]:
 
         return LookupObjective(objective_config, **kwargs)
 
+    if objective == "moldynam":
+        from molpal.objectives.moldynam import MoldynamObjective
+
+        return MoldynamObjective(objective_config, **kwargs)
+
     raise NotImplementedError(f'Unrecognized objective: "{objective}"')

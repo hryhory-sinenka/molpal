@@ -180,3 +180,6 @@ prep_glide_csv.py
 *.bz2
 *.cxsmiles
 extract_smis.py
+
+*.code-workspace
+output/

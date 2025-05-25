@@ -355,7 +355,7 @@ class Explorer:
         )
         self.exhausted_pool = len(inputs) == 0
 
-        self.new_scores = self.objective(inputs)
+        self.new_scores = self.objective(inputs, iter=self.iter, output_dir=self.path)
         self.scores.update(self.new_scores)
 
         if len(self.scores) >= self.k:
@@ -433,7 +433,7 @@ class Explorer:
         )
         self.exhausted_pool = len(inputs) < self.acquirer.batch_size(self.iter - 1)
 
-        self.new_scores = self.objective(inputs)
+        self.new_scores = self.objective(inputs, iter=self.iter, output_dir=self.path)
         self.scores.update(self.new_scores)
 
         if len(self.scores) >= self.k:
@@ -475,6 +475,8 @@ class Explorer:
         k = k or self.k
         if isinstance(k, float):
             k = int(k * self.full_pool_size)
+            # redacted / corrected by Gregory
+            k = 1 if k == 0 else k
         k = min(k, len(self.scores))
 
         if k == len(self.scores):

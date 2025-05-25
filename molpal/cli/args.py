@@ -1,5 +1,6 @@
-from configargparse import ArgumentTypeError, ArgumentParser, Namespace
 from typing import Union
+
+from configargparse import ArgumentParser, ArgumentTypeError, Namespace
 
 
 def add_args(parser: ArgumentParser):
@@ -218,7 +219,7 @@ def add_objective_args(parser: ArgumentParser):
         "-o",
         "--objective",
         required=True,
-        choices={"lookup", "docking"},
+        choices={"lookup", "docking", "moldynam"},
         help="the objective function to use",
     )
     parser.add_argument(
